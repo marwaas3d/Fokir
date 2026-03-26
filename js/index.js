@@ -197,6 +197,28 @@ secondBtn.addEventListener("click", function () {
         background-color: transparent`;
 });
 
+let container = document.querySelector(".reviews");
+
+let startX = 0;
+let endX = 0;
+
+container.addEventListener("touchstart", function (e) {
+  startX = e.touches[0].clientX;
+});
+
+container.addEventListener("touchend", function (e) {
+  endX = e.changedTouches[0].clientX;
+
+  let diff = startX - endX;
+
+  if (diff > 50) {
+    secondBtn.click();
+  }
+
+  if (diff < -50) {
+    firstBtn.click();
+  }
+});
 /****************************numbers appear during scroll************************ */
 
 let started = false;
